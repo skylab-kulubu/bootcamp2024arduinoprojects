@@ -1,1 +1,27 @@
+#define ENA 10
+#define EN1 9
+#define sensor 2 
+
+void setup() {
+  pinMode(sensor, INPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(EN1, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int sensorDeger = digitalRead(sensor); 
+
+  if (sensorDeger == LOW) 
+  {
+    digitalWrite(ENA, HIGH);  
+    digitalWrite(EN1, HIGH);
+  } else {
+    digitalWrite(ENA, LOW);
+    digitalWrite(EN1, LOW); 
+  }
+
+  Serial.println(sensorDeger);
+  delay(100);
+}
 
