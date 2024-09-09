@@ -1,0 +1,27 @@
+int buzzer= A1;
+// notaların frekans değerleri
+int C = 262; // do
+int D = 294; // re
+int E = 330; // mi
+int F = 349; // fa
+int G = 392; // sol
+int A = 440; //
+int B = 493; // si
+int Cc = 523; // do (ince)
+//notalar adında bir dizi oluşturalım
+int notalar[] = {C, D, E, F, G, A, B, Cc};
+int notaSayisi = 8;
+
+void setup()
+{
+for(int i = 0; i < notaSayisi; i++)
+{
+tone(buzzer,notalar[i]);
+delay(500);
+noTone(buzzer);
+delay(20);
+}
+}
+void loop()
+{
+}
