@@ -1,0 +1,13 @@
+int kirmizi=13;
+void setup()
+{
+  pinMode(kirmizi, OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(kirmizi, HIGH);
+  delay(1000); 
+  digitalWrite(kirmizi, LOW);
+  delay(1000);
+}
