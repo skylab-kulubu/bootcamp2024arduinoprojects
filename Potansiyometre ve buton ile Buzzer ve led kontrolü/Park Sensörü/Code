@@ -1,0 +1,71 @@
+int buzzer=11;
+int yesil=10;
+int turuncu=9;
+int mavi=8;
+int kirmizi=7;
+int trig=6;
+int echo=5;
+int sure;
+int mesafe;
+
+void setup()
+{
+  pinMode(buzzer,OUTPUT);
+  pinMode(yesil,OUTPUT);
+  pinMode(turuncu,OUTPUT);
+  pinMode(mavi,OUTPUT);
+  pinMode(kirmizi,OUTPUT);
+  pinMode(trig, OUTPUT);
+  pinMode(echo, INPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  digitalWrite(trig, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trig, LOW);
+  delayMicroseconds(2);
+  sure=pulseIn(echo,HIGH);
+  mesafe=(sure/2)/29.1;
+  Serial.print("Mesafe:");
+  Serial.print(mesafe);
+  Serial.print("  |  Sure:");
+  Serial.println(sure);
+  delay(500);
+  
+  if(mesafe>45)
+  {
+    digitalWrite(kirmizi,HIGH);
+    digitalWrite(mavi,LOW);
+    digitalWrite(turuncu,LOW);
+    digitalWrite(yesil,LOW);
+    tone(buzzer,262);
+  }
+  else if(mesafe>25 && mesafe<=45)
+  {
+    digitalWrite(kirmizi,LOW);
+	digitalWrite(mavi,HIGH);
+    digitalWrite(turuncu,LOW);
+    digitalWrite(yesil,LOW);
+    tone(buzzer,294);
+  }
+  else if(mesafe>10 && mesafe<=25)
+  {
+    digitalWrite(kirmizi,LOW);
+    digitalWrite(mavi,LOW);
+    digitalWrite(turuncu,HIGH);
+    digitalWrite(yesil,LOW);
+	tone(buzzer,330);
+  }
+  else if(mesafe<=10)
+  {
+    digitalWrite(kirmizi,LOW);
+    digitalWrite(mavi,LOW);
+    digitalWrite(turuncu,LOW);
+    digitalWrite(yesil,HIGH);
+    tone(buzzer,349);
+  }
+}
